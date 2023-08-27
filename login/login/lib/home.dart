@@ -45,7 +45,7 @@ class _IMCCalculatorState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.blue,
         title: const Text(
           "Calculadora de IMC",
           style: TextStyle(
@@ -116,8 +116,11 @@ class _IMCCalculatorState extends State<HomePage> {
               ),
             ),
             SizedBox(height: 16),
-            Text("IMC: $bmiResult"),
+            Text("IMC: ${bmiResult.toStringAsFixed(2)}"),
             Text("Resultado: $resultText"),
+            SizedBox(
+                      height: 10,
+                    ),
 
             ElevatedButton(
               onPressed: () {
@@ -143,10 +146,12 @@ class _IMCCalculatorState extends State<HomePage> {
                     final snackBar = SnackBar(
                       content: Text('O peso máximo permitido é 500 kg'),
                     );
+                    
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   }
                 }
               },
+              
               child: Text("Calcular"),
             ),
           ],
