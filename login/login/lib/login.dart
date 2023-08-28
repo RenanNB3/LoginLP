@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login/home.dart';
+import 'package:login/reset-password_page.dart'; // Asegúrate de importar la página ResetPasswordPage correctamente
 
 void main() {
   runApp(MyApp());
@@ -16,14 +17,14 @@ class MyApp extends StatelessWidget {
 }
 
 class LoginPage extends StatelessWidget {
-  final TextEditingController usernameController = TextEditingController(); 
-  final TextEditingController passwordController = TextEditingController(); 
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     double baseWidth = MediaQuery.of(context).size.width;
     double fem = MediaQuery.of(context).size.width / baseWidth;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Tela de Login'),
@@ -41,12 +42,12 @@ class LoginPage extends StatelessWidget {
               child: Image.asset('assets/log.png'),
             ),
             TextField(
-              controller: usernameController, // controlar campo de nome
+              controller: usernameController,
               decoration: InputDecoration(labelText: 'Nome de Usuário'),
             ),
             SizedBox(height: 16.0),
             TextField(
-              controller: passwordController, // controlar campo de senha
+              controller: passwordController,
               obscureText: true,
               decoration: InputDecoration(labelText: 'Senha'),
             ),
@@ -54,20 +55,24 @@ class LoginPage extends StatelessWidget {
               height: 40,
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {
-                  // Lógica para recuperar a senha
-                },
                 child: Text(
                   'Recuperar Senha',
-                  style: TextStyle(decoration: TextDecoration.underline),
+                  textAlign: TextAlign.end,
                 ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ResetPasswordPage()),
+                  );
+                  // Lógica para recuperar a senha
+                },
               ),
             ),
             SizedBox(height: 32.0),
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                // Validar se o campo foi preenchido
+                  // Validar si los campos están llenos
                   if (usernameController.text.isEmpty || passwordController.text.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -87,9 +92,9 @@ class LoginPage extends StatelessWidget {
                   }
                 },
                 child: Text('Entrar'),
-                style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(Size(200, 40)),
-                  elevation: MaterialStateProperty.all(0),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(200, 40),
+                  elevation: 0,
                 ),
               ),
             ),
