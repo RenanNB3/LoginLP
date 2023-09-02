@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ResetPasswordPage extends StatelessWidget {
-  const ResetPasswordPage({super.key});
+  const ResetPasswordPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class ResetPasswordPage extends StatelessWidget {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          color:  Colors.black38,
+          color: Colors.black38,
           onPressed: () => Navigator.pop(context, false),
         ),
       ),
@@ -26,7 +26,7 @@ class ResetPasswordPage extends StatelessWidget {
             SizedBox(
               width: 200,
               height: 200,
-              child: Image.asset("assets/img.png"), //Imagem
+              child: Image.asset("assets/img.png"), // Imagem
             ),
             SizedBox(
               height: 20,
@@ -42,12 +42,12 @@ class ResetPasswordPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              "Nos enforme o Email associado a sua conta que será enviado um link para o mesmo com as instruções para a restauração de sua senha.",
+              "Nos informe o e-mail associado à sua conta que será enviado um link para o mesmo com as instruções para a restauração de sua senha.",
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
               ),
-              textAlign:  TextAlign.center,
+              textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 10,
@@ -59,7 +59,7 @@ class ResetPasswordPage extends StatelessWidget {
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
-                  fontSize: 20,               
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -68,20 +68,37 @@ class ResetPasswordPage extends StatelessWidget {
             ),
             Container(
               height: 60,
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   stops: [0.3, 1],
                   colors: [
-                  Color(0xFF58524),
-                  Color(0xFFF92B7F),
+                    Color(0xFF00FFFF),
+                    Color(0xFFFFB6C1),
                   ],
                 ),
-                //borderRadius: BorderRadius.all(RadiusRadius.circular)
+                borderRadius: BorderRadius.all(
+                  Radius.circular(5),
+                ),
               ),
-            )
+              child: SizedBox.expand(
+                child: TextButton( // Alterado de FlatButton para TextButton
+                  onPressed: () {
+                    // Adicione aqui a lógica para enviar o e-mail de redefinição de senha
+                  },
+                  child: Text(
+                    'Enviar',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
