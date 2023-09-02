@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/login.dart';
 
 class ResetPasswordPage extends StatelessWidget {
   const ResetPasswordPage({Key? key});
@@ -86,7 +87,16 @@ class ResetPasswordPage extends StatelessWidget {
               child: SizedBox.expand(
                 child: TextButton( // Alterado de FlatButton para TextButton
                   onPressed: () {
-                    // Adicione aqui a lógica para enviar o e-mail de redefinição de senha
+                    
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Email Enviado!'),
+                      ),
+                    );
                   },
                   child: Text(
                     'Enviar',
